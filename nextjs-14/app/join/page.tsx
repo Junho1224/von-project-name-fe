@@ -3,6 +3,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const SERVER = "http://localhost:8080";
 
@@ -15,7 +16,6 @@ export default function Join() {
     const [job, setjob] = useState('');
     const [height, setpheight] = useState('');
     const [weight, setpweight] = useState('');
-    const [id, setid] = useState('');
 
     const handleUserName = (e: any) => {
         setusername(e.target.value);
@@ -49,9 +49,6 @@ export default function Join() {
         setpweight(e.target.value);
     };
 
-    const handleId = (e: any) => {
-        setid(e.target.value);
-    };
 
     const router = useRouter();
 
@@ -59,7 +56,7 @@ export default function Join() {
     const handleClick = () => {
         alert("회원가입 성공 : " + username);
         const url = `${SERVER}/api/users`;
-        const data = { username, password, name, phone, addressId, job, height, weight, id }; // 키,밸류가 같으면 생략 가능
+        const data = { username, password, name, phone, addressId, job, height, weight }; // 키,밸류가 같으면 생략 가능
         const config = {
             headers: {
                 "Cache-Control": "no-cache",
@@ -123,11 +120,6 @@ export default function Join() {
                 <br />
                 <br />
 
-                <label htmlFor="id">id</label>
-                <input type="text" placeholder="Enter id" onChange={handleId} required />
-                <br />
-                <br />
-
                 {/* <label>
                         <input type="checkbox" checked={true} name="remember" style={{ marginBottom: '15px' }} /> Remember me
                     </label> */}
@@ -136,7 +128,7 @@ export default function Join() {
                 {/* <p>By creating an account you agree to our <a href="#" style={{ color: 'dodgerblue' }}>Terms & Privacy</a>.</p> */}
 
                 <button onClick={handleClick}>Sign Up</button><br />
-                <button type="button" className="cancelbtn">Cancel</button>
+                <Link href={"/"}>홈</Link>
             </div>
 
 
