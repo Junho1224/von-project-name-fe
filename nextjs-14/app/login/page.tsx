@@ -2,6 +2,7 @@
 
 
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -17,9 +18,10 @@ export default function Login() {
     const handlepw = (e: any) => {
         setuserPassword(e.target.value);
     }
+
+    const router = useRouter();
     
     const handlesubmit = () => {
-        alert("로그인 성공 : " + username);
         const url = `${SERVER}/api/login`;
     const data = { username, password }; // 키,밸류가 같으면 생략 가능
     const config = {
@@ -34,6 +36,15 @@ export default function Login() {
         // alert("리스핀스가 가져온 이름 : " + JSON.stringify(res.data)); //JSON.stringify는 자바에서 tostring
         const message = res.data.message;
         alert((message)) //map의 key값인 message
+        if(message === 'SUCCESS'){
+            router.push("/articles/new_article");
+        }else if (message === 'FAIL'){
+            alert("FAIL");
+        }else if (message === 'WRONG_PASSWORD'){
+            alert("WRONG_PASSWORD");
+        }else{
+            alert("지정되지 않은 값");
+        }
 
 
         
