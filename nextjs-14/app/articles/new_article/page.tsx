@@ -3,7 +3,8 @@
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { DataGrid } from '@mui/x-data-grid';
 
 const SERVER = "http://localhost:8080";
 // TypeScript syntax
@@ -15,58 +16,39 @@ interface IArticle {
     registerDate: string
 }
 
-const Article = (props: IArticle) => {
-    return (
-        <tr key= {props.id}>
-            <td>{props.title}</td>
-            <td>{props.content}</td>
-            <td>{props.writer}</td>
-            <td>{props.registerDate}</td>
-        </tr>
-    );
-};
+
 
 export default function Articles() {
+    const [articles, setArticles] = useState<IArticle[]>([]);
     const router = useRouter();
-    const url = `${SERVER}/api/login`;
+    const url = `${SERVER}/api/articles`;
+
     const config = {
-      headers: {
-        "Cache-Control": "no-cache",
-        "Content-Type": "application/json",
-        Authorization: `Bearer blah ~`,
-        "Access-Control-Allow-Origin": "*",
-      },
+        headers: {
+            "Cache-Control": "no-cache",
+            "Content-Type": "application/json",
+            Authorization: `Bearer blah ~`,
+            "Access-Control-Allow-Origin": "*",
+        },
     };
 
-    axios.get(url, config)
-    .then(res => {        
-        const message = res.data.message;
-        alert((message)) 
-        if(message === 'SUCCESS'){
-            alert("게시글이 있습니다.")
-        }else if (message === 'FAIL'){
-            alert("게시글이 없습니다.");
-        }else{
-            alert("지정되지 않은 값");
-        }
 
+    useEffect(() => {
+        axios.get(url, config)
+            .then(res => {
+                const message = res.data.message
+                if (message === 'SUCCESS') {
+                    alert("게시글이 있습니다.")
+                    setArticles(res.data.result)
 
-    });
+                } else if (message === 'FAIL') {
+                    alert("게시글이 없습니다.");
+                } else {
+                    alert("지정되지 않은 값");
+                }
+            });
+    }, []);
 
-    const rows = [
-        
-        { id: 0, title: "", content: "", writer: "", registerDate: "" },
-    ];
-
-    const rowList = rows.map((v) => (
-        <Article
-            id={v.id}
-            title={v.title}
-            content={v.content}
-            writer={v.writer}
-            registerDate={v.registerDate}
-        />
-    ));
 
     return (
         <>
@@ -82,7 +64,14 @@ export default function Articles() {
                     </tr>
                 </thead>
                 <tbody>
-                    {rowList}
+                    {articles.map((article) => (
+                        <tr key={article.id}>
+                            <td>{article.title}</td>
+                            <td>{article.content}</td>
+                            <td>{article.writer}</td>
+                            <td>{article.registerDate}</td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </>

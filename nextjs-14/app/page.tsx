@@ -1,5 +1,6 @@
 "use client";
 
+import './globals.css'
 import axios from "axios";
 import Link from "next/link";
 import { useState } from "react";
@@ -31,14 +32,17 @@ export default function Home() {
   };
 
   return (
+  <div className='text-center'>
     <>
       <div>Welcome</div>
-      <h3>당신의 이름은</h3>
+      <h3 className='text-red-500'>당신의 이름은</h3><br />
       <input type="text" onChange={handleChange} />
       <br />
       <button onClick={handleClick}>전송</button><br />
       <Link href={"/login"}>로그인</Link><br />
-      <Link href={"/join"}>회원가입</Link>
+      <Link href={"/join"}>회원가입</Link><br />
+      <Link href={"/mui-demo"}>mui demo</Link>
     </>
+    </div>
   );
 }

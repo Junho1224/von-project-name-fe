@@ -4,7 +4,7 @@
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const SERVER = "http://localhost:8080";
 
@@ -37,7 +37,7 @@ export default function Login() {
         const message = res.data.message;
         alert((message)) //map의 key값인 message
         if(message === 'SUCCESS'){
-            router.push("/articles/new_article");
+            router.push("/articles/new_article"); //stack
         }else if (message === 'FAIL'){
             alert("FAIL");
         }else if (message === 'WRONG_PASSWORD'){
@@ -45,8 +45,6 @@ export default function Login() {
         }else{
             alert("지정되지 않은 값");
         }
-
-
         
       });
     };
