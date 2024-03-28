@@ -5,8 +5,12 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { DataGrid } from '@mui/x-data-grid';
-
+import Box from "@mui/material/Box";
+import { Button, Input } from "@mui/material";
+import AxiosConfig from "@/app/organisms/configs/axios-config";
 const SERVER = "http://localhost:8080";
+
+
 // TypeScript syntax
 interface IArticle {
     id: number,
@@ -23,18 +27,8 @@ export default function Articles() {
     const router = useRouter();
     const url = `${SERVER}/api/articles`;
 
-    const config = {
-        headers: {
-            "Cache-Control": "no-cache",
-            "Content-Type": "application/json",
-            Authorization: `Bearer blah ~`,
-            "Access-Control-Allow-Origin": "*",
-        },
-    };
-
-
     useEffect(() => {
-        axios.get(url, config)
+        axios.get(url, AxiosConfig())
             .then(res => {
                 const message = res.data.message
                 if (message === 'SUCCESS') {
@@ -52,7 +46,7 @@ export default function Articles() {
 
     return (
         <>
-            <h2>게시판</h2>
+            <h2>게시글 목록 </h2>
 
             <table>
                 <thead>
@@ -74,6 +68,8 @@ export default function Articles() {
                     ))}
                 </tbody>
             </table>
+
+
         </>
     );
 }

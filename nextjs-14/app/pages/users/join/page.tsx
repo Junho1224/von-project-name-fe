@@ -4,8 +4,8 @@ import axios from "axios";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-
-const SERVER = "http://localhost:8080";
+import { API } from "@/app/atoms/enums/API";
+import AxiosConfig from "@/app/organisms/configs/axios-config";
 
 export default function Join() {
     const [username, setusername] = useState('');
@@ -56,19 +56,12 @@ export default function Join() {
     const handleClick = () => { // 속성을 가진 함수는 객체
         
         alert("회원가입 성공 : " + username);
-        const url = `${SERVER}/api/users`;
+        const url = `${API.SERVER}/api/users`;
         const data = { username, password, name, phone, addressId, job, height, weight }; // 키,밸류가 같으면 생략 가능
-        const config = {
-            headers: {
-                "Cache-Control": "no-cache",
-                "Content-Type": "application/json",
-                Authorization: `Bearer blah ~`,
-                "Access-Control-Allow-Origin": "*",
-            },
-        };
-        axios.post(url, data, config).then((res) => {
+        
+        axios.post(url, data, AxiosConfig()).then((res) => {
             alert("리스핀스가 가져온 이름 : " + JSON.stringify(res.data))
-            router.push("/login");
+            router.push("login");
         });
     };
 

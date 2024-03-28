@@ -37,7 +37,7 @@ export default function Login() {
         const message = res.data.message;
         alert((message)) //map의 key값인 message
         if(message === 'SUCCESS'){
-            router.push("/articles/new_article"); //stack
+            router.push("/pages/boards/articles"); //stack
         }else if (message === 'FAIL'){
             alert("FAIL");
         }else if (message === 'WRONG_PASSWORD'){
