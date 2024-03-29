@@ -1,5 +1,6 @@
 "use client";
 
+import { NextPage } from "next";
 import { useState } from "react";
 
 const buttonStyle = {
@@ -12,10 +13,7 @@ const buttonStyle = {
     cursor: 'pointer', // 마우스 오버 시 커서 변경
     fontSize: '16px' // 글자 크기
 };
-
-
-export default function Counter(){
-
+const Counter: NextPage = ()=>{
     const [count, setCount] = useState(0);
 
     const handlePlus = () => {
@@ -25,11 +23,6 @@ export default function Counter(){
     const handleMin = () => {
         setCount(count - 1);
     }
-
-
-    
-    
-
 
 
     return (
@@ -46,3 +39,5 @@ export default function Counter(){
         </>
     )
 }
+
+export default Counter

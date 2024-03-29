@@ -1,12 +1,11 @@
 "use client";
 
-import './globals.css'
-import axios from "axios";
+import { useState } from "react"
+import axios from 'axios';
 import Link from "next/link";
-import { useState } from "react";
-import { PG } from './atoms/enums/PG';
-import { API } from './atoms/enums/API';
-import AxiosConfig from './organisms/configs/axios-config';
+import { PG } from "../redux/common/enums/PG";
+import { API } from "../redux/common/enums/API";
+import AxiosConfig from "@/redux/common/configs/axios-config";
 
 
 
@@ -38,7 +37,8 @@ export default function Home() {
       <Link href={`${PG.DEMO}/mui-demo`}>Mui demo</Link><br />
       <Link href={`${PG.DEMO}/companies`}>Company</Link><br />
       <Link href={`${PG.DEMO}/counter`}>counter demo</Link><br />
-      <Link href={`${PG.DEMO}/counter/container`}>redux demo</Link><br />
+      <Link href={`${PG.DEMO}/redux-counter`}>redux demo</Link><br />
+      <Link href={`${PG.BOARD}/articles`}>전체 게시글</Link><br />
       
     </>
     </div>

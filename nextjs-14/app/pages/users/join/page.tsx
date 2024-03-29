@@ -1,13 +1,16 @@
 "use client";
 
 import axios from "axios";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { API } from "@/app/atoms/enums/API";
-import AxiosConfig from "@/app/organisms/configs/axios-config";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
-export default function Join() {
+import { NextPage } from "next";
+import { API } from "@/redux/common/enums/API";
+import AxiosConfig from "@/redux/common/configs/axios-config";
+
+
+const Join: NextPage = ()=>{
     const [username, setusername] = useState('');
     const [password, setPassword] = useState('');
     const [name, setname] = useState('');
@@ -130,3 +133,6 @@ export default function Join() {
     )
 
 }
+
+
+export default Join
