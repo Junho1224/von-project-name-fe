@@ -1,15 +1,15 @@
 import { instance } from "@/redux/common/configs/axios-config"
 
 
-export const fetchAllArticlesAPI = async (page: number)=>{ //axios
+export const fetchAllUsersAPI = async (page: number)=>{ //axios
     try{
-        const response = await instance.get('all-articles',{
+        const response = await instance.get('users',{
             params: {page, limit: 10}
         })
         return response.data
 
     }catch(error){
-        console.log("getAllArticleAPI error"+error)
+        console.log("getAllUserAPI error"+error)
 
         return error
     }

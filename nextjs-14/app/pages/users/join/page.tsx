@@ -58,7 +58,6 @@ const Join: NextPage = ()=>{
 
     const handleClick = () => { // 속성을 가진 함수는 객체
         
-        alert("회원가입 성공 : " + username);
         const url = `${API.SERVER}/api/users`;
         const data = { username, password, name, phone, addressId, job, height, weight }; // 키,밸류가 같으면 생략 가능
         

@@ -11,4 +11,4 @@ export default function AxiosConfig(){
     }
 };
 
-export const instance = axios.create({baseURL:'http://localhost:8080/api'})
+export const instance = axios.create({baseURL:'http://localhost:8080/api'}) //axios의 객체

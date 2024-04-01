@@ -29,17 +29,9 @@ export default function Home() {
   return (
   <div className='text-center'>
     <>
-      <div>Welcome</div>
+      <div>Welcome to</div>
       <h1 className='text-red-500'>Team Von</h1><br />
       <br />
-      <Link href={`${PG.USER}/login`}>로그인</Link><br />
-      <Link href={`${PG.USER}/join`}>회원가입</Link><br />
-      <Link href={`${PG.DEMO}/mui-demo`}>Mui demo</Link><br />
-      <Link href={`${PG.DEMO}/companies`}>Company</Link><br />
-      <Link href={`${PG.DEMO}/counter`}>counter demo</Link><br />
-      <Link href={`${PG.DEMO}/redux-counter`}>redux demo</Link><br />
-      <Link href={`${PG.BOARD}/articles`}>전체 게시글</Link><br />
-      
     </>
     </div>
   );
