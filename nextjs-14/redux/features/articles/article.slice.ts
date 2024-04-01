@@ -17,6 +17,7 @@ const handlePending = (state: any) => {
 const handleFulfilled = (state: any, {payload}: any) => {
     console.log('-----conclusion-----')
     console.log(JSON.stringify(payload))
+    state.articles = payload
 
 }
 const handleRejected = (state: any) => {

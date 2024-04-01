@@ -20,34 +20,34 @@ interface IArticle {
     registerDate: string
 }
 
-const ArticlesPage: NextPage = ()=>{
+const ArticlesPage: NextPage = () => {
     const dispatch = useDispatch()
-    const [articles,setArticles] = useState([])
+    const [articles, setArticles] = useState([])
 
     useEffect(() => {
-        dispatch(getAllArticles())
-        
+        dispatch(getAllArticles(1))
+
     }, []);
     return (
         <>
             <h2>게시글 목록 </h2>
 
-            <table>
+            <table border={1}>
                 <thead>
                     <tr>
-                        <th>제목</th>
-                        <th>내용</th>
-                        <th>작성자</th>
-                        <th>등록일</th>
+                        <th>title</th>
+                        <th>content</th>
+                        <th>writer</th>
+                        <th>registerDate</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {articles.map((article: IArticle) => (
-                        <tr key={article.id}>
-                            <td>{article.title}</td>
-                            <td>{article.content}</td>
-                            <td>{article.writer}</td>
-                            <td>{article.registerDate}</td>
+                    {articles.map((props: IArticle) => (
+                        <tr key={props.id}>
+                            <td>{props.title}</td>
+                            <td>{props.content}</td>
+                            <td>{props.writer}</td>
+                            <td>{props.registerDate}</td>
                         </tr>
                     ))}
                 </tbody>
