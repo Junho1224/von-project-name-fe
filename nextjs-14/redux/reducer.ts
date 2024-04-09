@@ -1,8 +1,9 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
-import countReducer from "@/redux/features/counter/counter.slice";
-import articleReducer from "@/redux/features/articles/article.slice";
-import userReducer from "@/redux/features/users/user.slice";
+import countReducer from "@/app/components/counter/counter.slice";
+import articleReducer from "@/app/components/articles/service/article.slice";
+import userReducer from "@/app/components/users/service/user.slice";
+import boardReducer from "@/app/components/boards/service/board.slice";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 
 const createNoopStorage = () => {
@@ -39,15 +40,23 @@ const userPersistConfig = {
   storage,
   whitelist: ["userState"],
 };
+const boardPersistConfig = {
+  key: "board",
+  storage,
+  whitelist: ["boardState"],
+};
 
 
 
 const persistedCountReducer = persistReducer(countPersistConfig, countReducer);
 const persistedArticleReducer = persistReducer(articlePersistConfig, articleReducer);
 const persistedUserReducer = persistReducer(userPersistConfig, userReducer);
+const persistedBoardReducer = persistReducer(boardPersistConfig, boardReducer);
 
-export const rootReducer = combineReducers({
+export const rootReducer = combineReducers({ //combineReducers로 슬라이스를 전부 합침 (json 구조)
   count: persistedCountReducer,
   article: persistedArticleReducer,
-  user: persistedUserReducer
+  user: persistedUserReducer,
+  board: persistedBoardReducer
+
 });

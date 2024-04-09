@@ -6,8 +6,8 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { NextPage } from "next";
-import { API } from "@/redux/common/enums/API";
-import AxiosConfig from "@/redux/common/configs/axios-config";
+import { API } from "@/app/components/common/enums/API";
+import AxiosConfig from "@/app/components/common/configs/axios-config";
 
 
 const Join: NextPage = ()=>{
@@ -17,8 +17,6 @@ const Join: NextPage = ()=>{
     const [phone, setphone] = useState('');
     const [addressId, setaddressId] = useState('');
     const [job, setjob] = useState('');
-    const [height, setpheight] = useState('');
-    const [weight, setpweight] = useState('');
 
     const handleUserName = (e: any) => {
         setusername(e.target.value);
@@ -36,20 +34,8 @@ const Join: NextPage = ()=>{
         setphone(e.target.value);
     };
 
-    const handleAddressId = (e: any) => {
-        setaddressId(e.target.value);
-    };
-
     const handleJob = (e: any) => {
         setjob(e.target.value);
-    };
-
-    const handleHeight = (e: any) => {
-        setpheight(e.target.value);
-    };
-
-    const handleWeight = (e: any) => {
-        setpweight(e.target.value);
     };
 
 
@@ -58,8 +44,8 @@ const Join: NextPage = ()=>{
 
     const handleClick = () => { // 속성을 가진 함수는 객체
         
-        const url = `${API.SERVER}/api/users`;
-        const data = { username, password, name, phone, addressId, job, height, weight }; // 키,밸류가 같으면 생략 가능
+        const url = `${API.SERVER}/api/users/join`;
+        const data = { username, password, name, phone, job}; // 키,밸류가 같으면 생략 가능
         
         axios.post(url, data, AxiosConfig()).then((res) => {
             alert("리스핀스가 가져온 이름 : " + JSON.stringify(res.data))
@@ -96,25 +82,12 @@ const Join: NextPage = ()=>{
                 <br />
                 <br />
 
-                <label htmlFor="addressId">addressId</label>
-                <input type="text" placeholder="Enter addressId" onChange={handleAddressId} required />
-                <br />
-                <br />
-
                 <label htmlFor="job">job</label>
                 <input type="text" placeholder="Enter job" onChange={handleJob} required />
                 <br />
                 <br />
 
-                <label htmlFor="height">height</label>
-                <input type="text" placeholder="Enter height" onChange={handleHeight} required />
-                <br />
-                <br />
-
-                <label htmlFor="weight">weight</label>
-                <input type="text" placeholder="Enter weight" onChange={handleWeight} required />
-                <br />
-                <br />
+            
 
                 {/* <label>
                         <input type="checkbox" checked={true} name="remember" style={{ marginBottom: '15px' }} /> Remember me

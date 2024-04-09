@@ -3,9 +3,9 @@
 import { useState } from "react"
 import axios from 'axios';
 import Link from "next/link";
-import { PG } from "../redux/common/enums/PG";
-import { API } from "../redux/common/enums/API";
-import AxiosConfig from "@/redux/common/configs/axios-config";
+import { PG } from "./components/common/enums/PG";
+import { API } from "./components/common/enums/API";
+import AxiosConfig from "@/app/components/common/configs/axios-config";
 
 
 
@@ -29,8 +29,9 @@ export default function Home() {
   return (
   <div className='text-center'>
     <>
+    <br />
       <div>Welcome to</div>
-      <h1 className='text-red-500'>Team Von</h1><br />
+      <h1 className='text-red-500 text-3xl'>Von</h1><br />
       <br />
     </>
     </div>

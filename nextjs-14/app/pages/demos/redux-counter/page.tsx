@@ -1,6 +1,6 @@
 "use client";
 
-import ReduxCounter from "@/redux/features/counter";
+import ReduxCounter from "@/app/components/counter";
 import { NextPage } from "next";
 
 const Counter: NextPage = ()=>{

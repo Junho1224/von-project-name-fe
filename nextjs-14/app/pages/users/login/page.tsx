@@ -33,7 +33,7 @@ const Login: NextPage = ()=>{
                 "Access-Control-Allow-Origin": "*",
             },
         };
-        axios.post(url, data, config).then((res) => {
+        axios.post(url, data, config).then((res) => {  
             // alert("리스핀스가 가져온 이름 : " + JSON.stringify(res.data)); //JSON.stringify는 자바에서 tostring
             const message = res.data.message;
             alert((message)) //map의 key값인 message
