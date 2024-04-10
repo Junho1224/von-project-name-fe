@@ -14,4 +14,16 @@ export const findAllArticlesAPI = async (page: number)=>{ //axios
         return error
     }
 }
+export const findArticleByIdAPI = async (id: number)=>{ //axios
+    try{
+        const response = await instance.get('/articles/detail',{
+            params: {id}
+        })
+        return response.data
+
+    }catch(error){
+
+        return error
+    }
+}
 

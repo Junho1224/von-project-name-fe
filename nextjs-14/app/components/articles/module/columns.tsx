@@ -26,7 +26,10 @@ export default function Columns(): GridColDef[]{
             sortable: false,
             field: 'title',
             headerName: "제목",
-            renderCell: ({row}:CellType) =>  <Typography textAlign="center" sx={{fontSize:"1.5rem"}}>  {row.title}</Typography>
+            renderCell: ({row}:CellType) =>  <Typography textAlign="center" sx={{fontSize:"1.5rem"}}>
+                <Link href={`${PG.ARTICLE}/detail/${row.id} `} className="underline" >{row.title}
+                </Link>
+                </Typography>
             
 
         },

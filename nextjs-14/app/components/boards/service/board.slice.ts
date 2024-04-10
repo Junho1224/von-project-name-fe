@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { findAllBoards } from "./board.service";
+import { findAllBoards, findBoardById } from "./board.service";
 import { initialState } from "./board.init";
 
 const status = {
@@ -25,15 +25,15 @@ export const boardSlice = createSlice({
     
             builder
                 .addCase(findAllBoards.fulfilled, handleFulfilled)
+                .addCase(findBoardById.fulfilled, (state:any,{payload} : any) => {state.array = payload})
 
     }
 })
 
 export const getAllBoards = (state: any) => {
-    console.log('------------------ Before useSelector ---------------')
-    console.log(JSON.stringify(state.board.array))
     return state.board.array;
 }
+export const getBoardById = (state: any) => state.board.array
 
 export const {}= boardSlice.actions
 // export const getSlice = (state: any)=> state.board.value

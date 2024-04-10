@@ -107,7 +107,7 @@ function Header() {
                         {pages.map((page) => (
                             <Link 
                             key={page} 
-                            href={`/${page === '회원가입' ? `${PG.USER}/join` :
+                            href={`${page === '회원가입' ? `${PG.USER}/join` :
                              page === '로그인' ? `${PG.USER}/login` :
                              page === '카운터' ? `${PG.DEMO}/redux-counter` :
                              page === '게시판 목록' ? `${PG.BOARD}/list` :
