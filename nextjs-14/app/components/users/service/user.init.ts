@@ -1,4 +1,4 @@
-import { IUser } from "../../../../redux/features/users/user.model";
+import { IUser } from "../model/user";
 
 export const initialState:IUser = {
     id: 0,

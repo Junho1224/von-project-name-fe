@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { findAllUsers } from "./user.service";
+import { findAllUsers, findUserById } from "./user.service";
 import { initialState } from "./user.init";
 
 const status = {
@@ -25,6 +25,7 @@ export const userSlice = createSlice({
     
             builder
                 .addCase(findAllUsers.fulfilled, handleFulfilled)
+                .addCase(findUserById.fulfilled, handleFulfilled)
 
     }
 })
@@ -34,6 +35,7 @@ export const getAllUsers = (state: any) => {
     console.log(JSON.stringify(state.user.array)) //array로 받기 때문에 .result 뺌.
     return state.user.array;
 }
+export const getUserById = (state: any) => state.user.array
 
 export const {}= userSlice.actions
 // export const getSlice = (state: any)=> state.user.value

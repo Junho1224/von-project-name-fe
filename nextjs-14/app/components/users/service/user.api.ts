@@ -15,3 +15,17 @@ export const findAllUsersAPI = async (page: number)=>{ //axios
     }
 }
 
+export const findUserByIdAPI = async (id: number)=>{ //axios
+    try{
+        const response = await instance.get('/users/detail',{
+            params: {id}
+        })
+        return response.data
+
+    }catch(error){
+        console.log("getfindUserById error"+error)
+
+        return error
+    }
+}
+
