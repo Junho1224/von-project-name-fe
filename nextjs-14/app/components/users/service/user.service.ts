@@ -6,7 +6,7 @@ export const findAllUsers: any = createAsyncThunk(
     async (page: number)=>{ //
         console.log('findAllUser page : '+ page)
 
-        const data : any = await findAllUsersAPI(1);
+        const data : any = await findAllUsersAPI(page);
 
         const {message, result}: any = data
     

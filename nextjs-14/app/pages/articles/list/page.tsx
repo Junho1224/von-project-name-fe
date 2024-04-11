@@ -18,17 +18,6 @@ const ArticlesPage: NextPage = ({ data }: any) => {
     const dispatch = useDispatch()
     const allArticles: [] = useSelector(getAllArticles)
 
-    if (allArticles !== undefined) {
-        console.log('allArticles is not undefined')
-
-        console.log('length is ' + allArticles.length)
-        for (let i = 0; i < allArticles.length; i++) {
-            console.log(JSON.stringify(allArticles[i]))
-        }
-    } else {
-        console.log('allArticles is undefined')
-    }
-
     useEffect(() => {  //즉시 실행 함수
         dispatch(findAllArticles(1))
     }, []);

@@ -8,12 +8,12 @@ const status = {
     rejected: 'rejected'
 }
 
-const handleFulfilled = (state: any, {payload}: any) => { // payload는 action객체
-    console.log('-----conclusion-----')
+const handleFulfilledarr = (state: any, {payload}: any) => { // payload는 action객체, 요구한것만 담는다. 여기서는 array
     state.array = payload 
-    console.log(state.array)
-
-
+}
+const handleFulfilledjson = (state: any, {payload}: any) => {  
+    state.json = payload 
+    
 }
 
 export const userSlice = createSlice({
@@ -24,8 +24,9 @@ export const userSlice = createSlice({
             const { pending, rejected } = status; // 진행중, 거부
     
             builder
-                .addCase(findAllUsers.fulfilled, handleFulfilled)
-                .addCase(findUserById.fulfilled, handleFulfilled)
+                .addCase(findAllUsers.fulfilled, handleFulfilledarr)
+                .addCase(findUserById.fulfilled, handleFulfilledjson)
+                //자바로 해석하자면 swich case() findUserById.fulfilled면 handleFulfilled 실행
 
     }
 })
@@ -35,7 +36,7 @@ export const getAllUsers = (state: any) => {
     console.log(JSON.stringify(state.user.array)) //array로 받기 때문에 .result 뺌.
     return state.user.array;
 }
-export const getUserById = (state: any) => state.user.array
+export const getUserById = (state: any) => (state.user.json) // 
 
 export const {}= userSlice.actions
 // export const getSlice = (state: any)=> state.user.value

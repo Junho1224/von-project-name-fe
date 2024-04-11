@@ -21,7 +21,7 @@ const UsersPage: NextPage = () => {
         }
     } else {
         console.log('allUsers is undefined')
-    }
+    } // 이미 slice에서 걸러져서 의미 없음
 
     useEffect(() => {  //즉시 실행 함수
         dispatch(findAllUsers(1))
