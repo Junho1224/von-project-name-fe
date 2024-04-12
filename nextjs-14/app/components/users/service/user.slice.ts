@@ -13,7 +13,6 @@ const handleFulfilledarr = (state: any, {payload}: any) => { // payload는 actio
 }
 const handleFulfilledjson = (state: any, {payload}: any) => {  
     state.json = payload 
-    
 }
 
 export const userSlice = createSlice({

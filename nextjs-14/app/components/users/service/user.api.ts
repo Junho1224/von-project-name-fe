@@ -28,17 +28,17 @@ export const findUserByIdAPI = async (id: number)=>{ //axios
         return error
     }
 }
-// export const deleteUserById = async (id: number)=>{ //axios
-//     try{
-//         const response = await instance.delete('/users/detail',{
-//             params: {id}
-//         })
-//         return response.data
+export const deleteUserByIdAPI = async (id: number)=>{ //axios
+    try{
+        const response = await instance.delete('/users/detail',{
+            params: {id}
+        })
+        return response.data
 
-//     }catch(error){
-//         console.log("deleteUserById error"+error)
+    }catch(error){
+        console.log("deleteUserById error"+error)
 
-//         return error
-//     }
-// }
+        return error
+    }
+}
 
