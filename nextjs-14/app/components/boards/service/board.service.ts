@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { findAllBoardsAPI, findBoardByIdAPI } from "./board.api";
 
 export const findAllBoards: any = createAsyncThunk(
-    'board/findAllBoards', //action
+    'boards/findAllBoards', //action
     async (page: number)=>{ //
         console.log('findAllBoard page : '+ page)
 

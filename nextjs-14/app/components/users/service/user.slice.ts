@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { findAllUsers, findUserById } from "./user.service";
+import { findAllUsers, findUserById, modifyUserById, deleteUserById, countUser } from "./user.service";
 import { initialState } from "./user.init";
 
 const status = {
     pending: 'pending',
-    fulfilled: 'fullfilld',
+    fulfilled: 'fullfilled',
     rejected: 'rejected'
 }
 
@@ -25,9 +25,14 @@ export const userSlice = createSlice({
             builder
                 .addCase(findAllUsers.fulfilled, handleFulfilledarr)
                 .addCase(findUserById.fulfilled, handleFulfilledjson)
+                .addCase(deleteUserById.fulfilled, handleFulfilledarr)
+                .addCase(modifyUserById.fulfilled, handleFulfilledarr)
+                .addCase(countUser.fulfilled, (state, action) => {
+                    state.count = action.payload;
                 //자바로 해석하자면 swich case() findUserById.fulfilled면 handleFulfilled 실행
 
-    }
+    })
+}
 })
 
 export const getAllUsers = (state: any) => {
@@ -36,6 +41,9 @@ export const getAllUsers = (state: any) => {
     return state.user.array;
 }
 export const getUserById = (state: any) => (state.user.json) // 
+export const getdeleteUserById = (state: any) => (state.user.array) // 
+export const getModifyUserById = (state: any) => (state.user.array) // 
+export const getCountUser = (state: any) => (state.user.count) // 
 
 export const {}= userSlice.actions
 // export const getSlice = (state: any)=> state.user.value

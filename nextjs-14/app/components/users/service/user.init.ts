@@ -9,6 +9,7 @@ export const initialState:IUser = {
     job: '',
     regDate : '',
     modDate : '',
+    count : 0,
     json : {},
     array: []
 
