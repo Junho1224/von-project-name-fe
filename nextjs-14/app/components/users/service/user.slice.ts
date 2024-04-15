@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { findAllUsers, findUserById, modifyUserById, deleteUserById, countUser } from "./user.service";
+import { findAllUsers, findUserById, modifyUserById, deleteUserById, countUser, login } from "./user.service";
 import { initialState } from "./user.init";
 
 const status = {
@@ -27,6 +27,9 @@ export const userSlice = createSlice({
                 .addCase(findUserById.fulfilled, handleFulfilledjson)
                 .addCase(deleteUserById.fulfilled, handleFulfilledarr)
                 .addCase(modifyUserById.fulfilled, handleFulfilledarr)
+                .addCase(login.fulfilled, (state: any, {payload}: any) => {  
+                    state.message = payload 
+                })
                 .addCase(countUser.fulfilled, (state, action) => {
                     state.count = action.payload;
                 //자바로 해석하자면 swich case() findUserById.fulfilled면 handleFulfilled 실행
@@ -44,6 +47,7 @@ export const getUserById = (state: any) => (state.user.json) //
 export const getdeleteUserById = (state: any) => (state.user.array) // 
 export const getModifyUserById = (state: any) => (state.user.array) // 
 export const getCountUser = (state: any) => (state.user.count) // 
+export const getMessage = (state: any) => (state.user.message) // 
 
 export const {}= userSlice.actions
 // export const getSlice = (state: any)=> state.user.value

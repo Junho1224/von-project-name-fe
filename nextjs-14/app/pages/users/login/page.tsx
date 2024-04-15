@@ -23,7 +23,7 @@ const Login: NextPage = ()=>{
     const router = useRouter();
 
     const handlesubmit = () => {
-        const url = `${SERVER}/api/login`;
+        const url = `${SERVER}/api/users/login`;
         const data = { username, password }; // 키,밸류가 같으면 생략 가능
         const config = {
             headers: {
@@ -38,7 +38,7 @@ const Login: NextPage = ()=>{
             const message = res.data.message;
             alert((message)) //map의 key값인 message
             if (message === 'SUCCESS') {
-                router.push("/pages/boards/articles"); //stack
+                router.push("/"); //stack
             } else if (message === 'FAIL') {
                 alert("FAIL");
             } else if (message === 'WRONG_PASSWORD') {
@@ -67,3 +67,12 @@ const Login: NextPage = ()=>{
 }
 
 export default Login
+
+
+
+
+
+
+
+
+

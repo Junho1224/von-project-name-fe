@@ -11,5 +11,6 @@ export interface IUser{
     count? :number
     json? : IUser
     array?: IUser[]
+    message? : string
     
 }

@@ -16,7 +16,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import Link from 'next/link';
 import { PG } from '@/app/components/common/enums/PG';
 
-const pages = ['회원가입', '로그인', '카운터','게시판 목록', '게시글 목록', '사용자 목록'];
+const pages = [ '카운트','게시판 목록', '게시글 목록', '사용자 목록'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Header() {
@@ -111,7 +111,7 @@ function Header() {
                             key={page} 
                             href={`${page === '회원가입' ? `${PG.USER}/join` :
                              page === '로그인' ? `${PG.USER}/login` :
-                             page === '카운터' ? `${PG.DEMO}/redux-counter` :
+                             page === '카운트' ? `${PG.DEMO}/redux-counter` :
                              page === '게시판 목록' ? `${PG.BOARD}/list` :
                              page === '게시글 목록' ? `${PG.ARTICLE}/list` :
                              page === '사용자 목록' ? `${PG.USER}/list` :

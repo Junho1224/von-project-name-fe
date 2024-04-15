@@ -1,15 +1,15 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { countUserAPI, deleteUserByIdAPI, findAllUsersAPI, findUserByIdAPI, modifyUserByIdAPI } from "./user.api";
+import { countUserAPI, deleteUserByIdAPI, findAllUsersAPI, findUserByIdAPI, loginAPI, modifyUserByIdAPI } from "./user.api";
 import { IUser } from "../model/user";
 
 export const findAllUsers: any = createAsyncThunk(
     'user/findAllUser', //action
-    async (page: number)=>{ //
+    async (page: number) => { //
         // console.log('findAllUser page : '+ page)
-        const data : any = await findAllUsersAPI(page);
+        const data: any = await findAllUsersAPI(page);
 
-        const {message, result}: any = data
-    
+        const { message, result }: any = data
+
         // console.log('----- API 를 사용한 경우 -----')
         // console.log('message : '+ message)
         // console.log(JSON.stringify(result))
@@ -43,3 +43,11 @@ export const modifyUserById: any = createAsyncThunk(
         return await modifyUserByIdAPI(all)
     }
 )
+export const login: any = createAsyncThunk(
+    'users/login', 
+    async (user: IUser) => {
+        const response = await loginAPI(user);
+        return response; // 
+
+    }
+);

@@ -69,3 +69,17 @@ export const modifyUserByIdAPI = async (all: IUser)=>{
     }
 }
 
+export const loginAPI = async(user:IUser) => {
+    try{
+        const response = await instance.post('/users/login',user)
+        return response.data
+
+    }catch(error){
+        console.log("login error"+error)
+
+        return error
+    }
+}
+
+
+
