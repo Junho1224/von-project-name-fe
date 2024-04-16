@@ -6,7 +6,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import dynamic from "next/dynamic";
 import Header from "./components/common/header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getAuth } from "./components/users/service/user.slice";
+import { useSelector } from "react-redux";
 
 const ReduxProvider = dynamic(() => import("@/redux/redux-provider"), {
   ssr: false
@@ -25,7 +27,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const [showHeader, setShowHeader] = useState<boolean>(false);
+  // const [showHeader, setShowHeader] = useState<boolean>(false);
+  // const auth = useSelector(getAuth)
+
+  // useEffect(()=>{
+  //   if(auth.token !== ""){
+  //     setShowHeader(true)
+  //   }else{
+  //     console.log('토큰에 값이 없는 상태')
+  //   }
+  // },[auth])
 
 // Header 뮤터블 처리, 조건절 추가
   return (
