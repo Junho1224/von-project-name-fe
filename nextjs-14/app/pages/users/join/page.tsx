@@ -126,27 +126,32 @@ const Join: NextPage = () => {
                                         className="w-full px-5 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                                         type="text"
                                         placeholder="Enter username"
+                                        onChange={handleUserName}
                                     />
                                     <input
                                         className="w-full px-5 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                                         type="password"
                                         placeholder="Enter password"
+                                        onChange={handlePw} 
                                     />
                                     <input
                                         className="w-full px-5 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                                         type="text"
                                         placeholder="Enter your name"
+                                        onChange={handleName}
                                     />
                                     <input
                                         className="w-full px-5 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                                         type="tel"
                                         placeholder="Enter your phone"
+                                        onChange={handlePhone}
                                     />
                                     
                                     <input
                                         className="w-full px-5 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                                         type="job"
                                         placeholder="Enter your job"
+                                        onChange={handleJob}
                                     />
                                     <button className="mt-5 tracking-wide font-semibold bg-blue-900 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                                         <svg
@@ -161,7 +166,8 @@ const Join: NextPage = () => {
                                             <circle cx="8.5" cy="7" r="4" />
                                             <path d="M20 8v6M23 11h-6" />
                                         </svg>
-                                        <span className="ml-3">Sign Up</span>
+                                        <span className="ml-3" onClick={handleClick}>Sign Up</span>
+                                        <Link href={"/"}></Link>
                                     </button>
                                     <p className="mt-6 text-xs text-gray-600 text-center">
                                         Already have an account?{" "}

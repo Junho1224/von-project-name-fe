@@ -1,14 +1,13 @@
 "use client";
 
 
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import dynamic from "next/dynamic";
 import Header from "./components/common/header";
-import { useEffect, useState } from "react";
-import { getAuth } from "./components/users/service/user.slice";
-import { useSelector } from "react-redux";
+import { parseCookies } from "nookies";
+import DashHeader from "./components/common/dash-header";
+
 
 const ReduxProvider = dynamic(() => import("@/redux/redux-provider"), {
   ssr: false
@@ -42,7 +41,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-      <Header/>
+      {parseCookies().message === 'SUCCESS' && <Header/>}
+        {parseCookies().message === 'ADMIN' && <DashHeader/>}
+      {/* <Header/> */}
         <div className="mt-100">
         <ReduxProvider > {children}</ReduxProvider>
         </div>

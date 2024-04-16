@@ -9,6 +9,10 @@ import { useRouter } from "next/navigation";
 import { IUser } from './components/users/model/user';
 import { getAuth } from './components/users/service/user.slice';
 import { login } from './components/users/service/user.service';
+import {setCookie, parseCookies, destroyCookie} from 'nookies'
+
+
+
 
 export default function Home() {
 
@@ -32,18 +36,22 @@ export default function Home() {
     }
 
     const handlesubmit = () => {
-        dispatch(login(auth));  // 타입 어설션 사용
+        console.log('user ...'+JSON.stringify(user))
+        dispatch(login(user));  // 타입 어설션 사용
 
     };
 
     useEffect(() => {
-        if (auth === 'SUCCESS') {
+        if (auth.message === 'SUCCESS') {
+            setCookie({},'message',auth.message,{httpOnly: false, path: '/'})
+            setCookie({},'token',auth.token,{httpOnly: false, path: '/'})
+            console.log('서버에서 넘어온 메시지' + parseCookies().message)
+            console.log('서버에서 넘어온 토큰' + parseCookies().token) 
             router.push('/pages/boards/list')
         } else {
             console.log('LOGIN FAIL')
         }
     }, [auth])
-
 
     return (
         <div className='text-center'>
